@@ -1,0 +1,12 @@
+.footer {
+  height: 80px;
+}
+
+a.text {
+  text-decoration: none;
+  color: white;
+}
+
+a.text:hover {
+  text-decoration: underline;
+}

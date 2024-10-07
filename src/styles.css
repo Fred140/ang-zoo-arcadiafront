@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+:root {
+  --primary-color: #1E9E09;
+  --secondary-color: #0968C0;
+  --tertiairy-color: #392C1E;
+}
+
+body {
+  font-family: "Hind Madurai", sans-serif;
+  font-size: 14px;
+  color: #292222;
+  display: contents;
+}
+
+.title {
+  font-family: "Montserrat";
+  text-color: white;
+  font-size: 25px;
+}
+
+.nav-link {
+  font-family: "Hind Madurai", sans-serif;
+  font-size: 18px;
+}
+
+.btn-zoo {
+  color: var(--tertiairy-color);
+}
+
+.featured-section {
+  background-color: var(--primary-color);
+}
+
+.shadow-effect {
+  border: none;
+  box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
+}
+
+html, body { height: 100%; }
+
