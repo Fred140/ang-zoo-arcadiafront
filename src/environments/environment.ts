@@ -1,5 +1,4 @@
 export const environment = {
-  production: false,
     firebase: {
     apiKey: "AIzaSyBW8UipDfmJNBSFp-NSX-20vZuYhJl4qHI",
     authDomain: "ang-zoo-dash.firebaseapp.com",

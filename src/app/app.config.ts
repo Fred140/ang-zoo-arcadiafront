@@ -10,7 +10,5 @@ import { environment } from '../environments/environment.development';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync('noop'), provideAnimationsAsync(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()), provideFirestore(() => getFirestore())]
+  providers: [provideRouter(routes), provideAnimationsAsync('noop'), provideAnimationsAsync(), provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())]
 };

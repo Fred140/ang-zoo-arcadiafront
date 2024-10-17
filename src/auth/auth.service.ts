@@ -1,22 +1,60 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User} from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { onAuthStateChanged } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private afs: AngularFireAuth) { }
+   private user: User | null = null;
 
-  signInWithGoogle(){
-    return this.afs.signInWithPopup(new GoogleAuthProvider());
-  }
-  registerWithEmailAndPassword(user: {email: string, password: string}) {
-       return this.afs.createUserWithEmailAndPassword(user.email, user.password);
+  constructor(private auth: Auth, private router: Router) {
+     onAuthStateChanged(this.auth, (user) => {
+      this.user = user;
+      if(user) {
+        localStorage.setItem('user', JSON.stringify(user));
+      } else {
+        localStorage.removeItem('user');
+      }
+     });
   }
 
-  signWithEmailAndPassword(user : {email: string, password: string}) {
-    return this.afs.signInWithEmailAndPassword(user.email, user.password);
+   //inscription
+  async signUp (email: string, password: string): Promise<any> {
+    try {
+      return await createUserWithEmailAndPassword(this.auth, email, password);
+    } catch (error) {
+      console.error('Erreur lors de l\'inscription.', error);
+      throw error;
+    }
   }
 
+  // Connexion
+  async signIn(email: string, password: string): Promise<any> {
+    try {
+      return await signInWithEmailAndPassword(this.auth, email, password);
+    } catch (error) {
+      console.error('Erreur lors de la connexion', error);
+      throw error;
+    }
+  }
+
+  // Déconnexion
+ async signOut(): Promise<void> {
+    await signOut(this.auth);
+    localStorage.removeItem('user');
+    this.router.navigate(['login']);
+  }
+
+  //   Vérifier si l'utilisateur est connecté
+  isLoggedIn(): boolean {
+    return !! localStorage.getItem('user');
+  }
+
+  // Obtenir l'utilisateur connecté
+  getUser(): User | null {
+    return this.user;
+  }
 }

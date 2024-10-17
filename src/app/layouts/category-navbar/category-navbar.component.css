@@ -1,4 +1,6 @@
-
+.navbar {
+  margin: auto;
+}
 
 .text-color {
    color: var(--tertiairy-color);
