@@ -26,5 +26,5 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'AdminDashboard', component: AdminDashboardComponent },
   { path: 'verifyemail', component: VerifyEmailComponent },
-  { path: 'forgotpassword', component: ForgotPasswordComponent }
+  { path: 'forgotpassword', component: ForgotPasswordComponent },
 ];
